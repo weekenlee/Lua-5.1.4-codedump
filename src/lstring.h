@@ -12,7 +12,7 @@
 #include "lobject.h"
 #include "lstate.h"
 
-
+//string 在TString头后面， len为实际字符串长度
 #define sizestring(s)	(sizeof(union TString)+((s)->len+1)*sizeof(char))
 
 #define sizeudata(u)	(sizeof(union Udata)+(u)->len)
