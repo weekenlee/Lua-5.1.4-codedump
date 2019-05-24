@@ -675,6 +675,9 @@ LUALIB_API int (luaL_loadstring) (lua_State *L, const char *s) {
 
 
 static void *l_alloc (void *ud, void *ptr, size_t osize, size_t nsize) {
+  //这个内存管理接口接受一个额外的指针 ud 。这可以让内存管理模块工作在不同的堆上。
+  //恰当的 定制内存管理器，就可以回避线程安全问题。不考虑线程安全的因素，我们可以
+  //让内存管理工作更为高效。
   (void)ud;
   (void)osize;
   if (nsize == 0) {

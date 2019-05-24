@@ -202,11 +202,12 @@ typedef union TString {
     CommonHeader;
     lu_byte reserved;
     unsigned int hash;
-    size_t len;
+    size_t len; // Lua 并不以 \0 结尾来识别字符串的长度，故需要一个 len 域来记录其长度
   } tsv;
 } TString;
 
-
+//字符串的数据内容并没有被分配独立一块内存来保存，而是直接最加在 TString 结构的后面。
+//用 getstr 这个宏就可以取到实际的 C 字符串指针
 #define getstr(ts)	cast(const char *, (ts) + 1)
 #define svalue(o)       getstr(rawtsvalue(o))
 
