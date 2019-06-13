@@ -345,10 +345,10 @@ typedef struct Node {
 typedef struct Table {
   CommonHeader;
   lu_byte flags;  /* 1<<p means tagmethod(p) is not present */ 
-  lu_byte lsizenode;  /* log2 of size of `node' array */
+  lu_byte lsizenode;  /* log2 of size of `node' array  哈希表大小*/
   struct Table *metatable;
   TValue *array;  /* array part */
-  Node *node;
+  Node *node; //哈希表部分
   Node *lastfree;  /* any free position is before this position */
   GCObject *gclist;
   int sizearray;  /* size of `array' array */
